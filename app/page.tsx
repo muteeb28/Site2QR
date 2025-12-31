@@ -1,6 +1,7 @@
 "use client";
 
 import NextImage from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   useEffect,
@@ -24,6 +25,11 @@ import { cn } from "@/lib/utils";
 const QR_SIZES = [220, 260, 300, 340];
 const DISPLAY_FONT = "Cinzel";
 const BODY_FONT = "Manrope";
+const NAV_ITEMS = [
+  { label: "Business cards", href: "/business-cards" },
+  { label: "Banner", href: "/banner" },
+  { label: "Logo", href: "/logo" },
+];
 const POSTER_WIDTH = 1200;
 const POSTER_HEIGHT = 800;
 
@@ -502,7 +508,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
 
         <header className="relative border-b border-white/10">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-6">
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <NextImage
@@ -522,8 +528,22 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="hidden text-right text-xs uppercase tracking-[0.3em] text-slate-500 md:block">
-              Print-ready posters
+            <div className="flex flex-col items-start gap-3 text-xs uppercase tracking-[0.3em] text-slate-500 md:items-end">
+              <span>Print-ready posters</span>
+              <nav
+                aria-label="Primary"
+                className="flex flex-wrap items-center justify-end gap-2 text-[0.6rem] tracking-[0.24em] text-slate-400"
+              >
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 transition hover:border-white/40 hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
             </div>
           </div>
         </header>
