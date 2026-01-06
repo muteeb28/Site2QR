@@ -397,7 +397,7 @@ export default function LogoPage() {
                   >
                     Layout
                   </label>
-                  <Select value={layout} onValueChange={setLayout}>
+                  <Select value={layout} onValueChange={(value) => setLayout(value as "horizontal" | "stacked")}>
                     <SelectTrigger
                       id="layout"
                       className="h-11 border-white/10 bg-slate-950/40 text-slate-100"
@@ -422,7 +422,7 @@ export default function LogoPage() {
                   >
                     Background tone
                   </label>
-                  <Select value={tone} onValueChange={setTone}>
+                  <Select value={tone} onValueChange={(value) => setTone(value as "light" | "dark")}>
                     <SelectTrigger
                       id="tone"
                       className="h-11 border-white/10 bg-slate-950/40 text-slate-100"
